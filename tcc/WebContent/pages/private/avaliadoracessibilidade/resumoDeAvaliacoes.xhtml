@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+			<p:commandButton update="form:datatable" value="IsAcessível - Relatório resumido" style="width:100%;text-align:center;" ajax="false" />
+			<p:dataTable id="datatable" var="resumoDeAvaliacao"
+				value="#{resAvals.getListResumoDeAvaliacao()}"
+				paginator="true" rows="4">
+				<p:column headerText="Recomendação: #{resAvals.getPadraoAcessibilidade()}, Profundidade: #{resAvals.getProfundidade()}">
+					<p:panel header="#{resumoDeAvaliacao.link}"
+						style="height:90px;font-size:9pt;">
+						<p:panel header="Erros P1" style="float:left;text-align:center;">
+							<h:outputText value="#{resumoDeAvaliacao.errop1}" />
+						</p:panel>
+						<p:panel header="Avisos P1" style="float:left;text-align:center;">
+							<h:outputText value="#{resumoDeAvaliacao.avisop1}" />
+						</p:panel>
+						<p:panel header="Erros P2" style="float:left;text-align:center;">
+							<h:outputText value="#{resumoDeAvaliacao.errop2}" />
+						</p:panel>
+						<p:panel header="Avisos P2" style="float:left;text-align:center;">
+							<h:outputText value="#{resumoDeAvaliacao.avisop2}" />
+						</p:panel>
+						<p:panel header="Erros P3" style="float:left;text-align:center;">
+							<h:outputText value="#{resumoDeAvaliacao.errop3}" />
+						</p:panel>
+						<p:panel header="Avisos P3" style="float:left;text-align:center;">
+							<h:outputText value="#{resumoDeAvaliacao.avisop3}" />
+						</p:panel>
+						<p:commandButton value="exibir"
+							action="#{resAvals.visualizar(resumoDeAvaliacao.getLinkEvalCode())}"
+							ajax="false" style="float:left;height:58px;" />
+					</p:panel>
+				</p:column>
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

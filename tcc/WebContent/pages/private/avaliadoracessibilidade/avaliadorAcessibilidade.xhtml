@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+			<p:panelGrid styleClass="width600px">
+				<p:row style="text-align:center;font-weight: bold;">
+					<p:column colspan="12">
+						IsAcessível - Avaliador de Acessibilidade para web
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="3" style="text-align:right;font-weight: bold;">
+						<p:outputLabel value="Recomendações" for="padroes" />
+					</p:column>
+					<p:column colspan="3">
+						<p:selectOneMenu id="padroes"
+							value="#{avAcess.criterio.padraoAcessibilidade}"
+							style="width:150px">
+							<f:selectItems value="#{avAcess.listaPadroes()}" />
+						</p:selectOneMenu>
+					</p:column>
+					<p:column colspan="3" style="text-align:right;font-weight: bold;">
+						<p:outputLabel value="Profundidade" for="profundidades" />
+					</p:column>
+					<p:column colspan="3">
+						<p:selectOneMenu id="profundidades"
+							value="#{avAcess.criterio.profundidade}" style="width:150px">
+							<f:selectItems value="#{avAcess.listaProfundidade()}" />
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column colspan="4">
+						<p:selectBooleanCheckbox itemLabel="Prioridade 1"
+							value="#{avAcess.criterio.prioridade1}" />
+					</p:column>
+					<p:column colspan="4">
+						<p:selectBooleanCheckbox itemLabel="Prioridade 2"
+							value="#{avAcess.criterio.prioridade2}" />
+					</p:column>
+					<p:column colspan="4">
+						<p:selectBooleanCheckbox itemLabel="Prioridade 3"
+							value="#{avAcess.criterio.prioridade3}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="12">
+						<p:inputText placeholder="Url" required="true" label="Url"
+							value="#{avAcess.criterio.url}" styleClass="width500px"
+							maxlength="200" size="90" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:right;">
+					<p:column colspan="12">
+						<p:commandButton value="avaliar" action="#{avAcess.avaliar()}"
+							ajax="false" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+			<p:panelGrid style="width:100%" styleClass="width600px">
+				<p:row style="font-weight: bold;text-align:center;">
+					<p:column>
+						<p:menubar>
+							<p:menuitem url="resumoDeAvaliacoes.xhtml" value="Voltar" />
+						</p:menubar>
+					</p:column>
+					<p:column> #{relUrl.titulo}</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="font-weight: bold;text-align:left;width:40px;"> URL:</p:column>
+					<p:column style="font-weight: bold;"> #{relUrl.relatorio.getUrl()}</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2" style="font-weight: bold;"> #{relUrl.titOcorTotais}</p:column>
+				</p:row>
+			</p:panelGrid>
+			<p:tabView>
+				<p:tab title="#{relUrl.titP1}">
+					<p:tabView>
+						<p:tab title="#{relUrl.titErrosP1}">
+							<p:dataTable value="#{relUrl.errosP1()}" var="var">
+								<p:column headerText="Casos Gerais">
+									<h:outputText value="#{var.getRegra()}" />
+								</p:column>
+								<p:column headerText="Ocorrências">
+									<h:outputText value="#{var.getOcorrencias()}" />
+								</p:column>
+								<p:column headerText="Linhas">
+									<h:outputText value="#{var.getLinhas()}" />
+								</p:column>
+							</p:dataTable>
+						</p:tab>
+						<p:tab title="#{relUrl.titAvisosP1}">
+							<p:dataTable value="#{relUrl.avisosP1()}" var="var">
+								<p:column headerText="Casos Gerais">
+									<h:outputText value="#{var.getRegra()}" />
+								</p:column>
+								<p:column headerText="Ocorrências">
+									<h:outputText value="#{var.getOcorrencias()}" />
+								</p:column>
+								<p:column headerText="Linhas">
+									<h:outputText value="#{var.getLinhas()}" />
+								</p:column>
+							</p:dataTable>
+						</p:tab>
+					</p:tabView>
+				</p:tab>
+				<p:tab title="#{relUrl.titP2}">
+					<p:tabView>
+						<p:tab title="#{relUrl.titErrosP2}">
+							<p:dataTable value="#{relUrl.errosP2()}" var="var">
+								<p:column headerText="Casos Gerais">
+									<h:outputText value="#{var.getRegra()}" />
+								</p:column>
+								<p:column headerText="Ocorrências">
+									<h:outputText value="#{var.getOcorrencias()}" />
+								</p:column>
+								<p:column headerText="Linhas">
+									<h:outputText value="#{var.getLinhas()}" />
+								</p:column>
+							</p:dataTable>
+						</p:tab>
+						<p:tab title="#{relUrl.titAvisosP2}">
+							<p:dataTable value="#{relUrl.avisosP2()}" var="var">
+								<p:column headerText="Casos Gerais">
+									<h:outputText value="#{var.getRegra()}" />
+								</p:column>
+								<p:column headerText="Ocorrências">
+									<h:outputText value="#{var.getOcorrencias()}" />
+								</p:column>
+								<p:column headerText="Linhas">
+									<h:outputText value="#{var.getLinhas()}" />
+								</p:column>
+							</p:dataTable>
+						</p:tab>
+					</p:tabView>
+				</p:tab>
+				<p:tab title="#{relUrl.titP3}">
+					<p:tabView>
+						<p:tab title="#{relUrl.titErrosP3}">
+							<p:dataTable value="#{relUrl.errosP3()}" var="var">
+								<p:column headerText="Casos Gerais">
+									<h:outputText value="#{var.getRegra()}" />
+								</p:column>
+								<p:column headerText="Ocorrências">
+									<h:outputText value="#{var.getOcorrencias()}" />
+								</p:column>
+								<p:column headerText="Linhas">
+									<h:outputText value="#{var.getLinhas()}" />
+								</p:column>
+							</p:dataTable>
+						</p:tab>
+						<p:tab title="#{relUrl.titAvisosP3}">
+							<p:dataTable value="#{relUrl.avisosP3()}" var="var">
+								<p:column headerText="Casos Gerais">
+									<h:outputText value="#{var.getRegra()}" />
+								</p:column>
+								<p:column headerText="Ocorrências">
+									<h:outputText value="#{var.getOcorrencias()}" />
+								</p:column>
+								<p:column headerText="Linhas">
+									<h:outputText value="#{var.getLinhas()}" />
+								</p:column>
+							</p:dataTable>
+						</p:tab>
+					</p:tabView>
+				</p:tab>
+			</p:tabView>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
